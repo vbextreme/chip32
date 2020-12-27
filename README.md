@@ -191,11 +191,11 @@ logc r          ; printf("%c", r)
 ```
 #### logs
 ```
- * 0x43 logs r          ; printf("%s", r)
+logs r          ; printf("%s", r)
 ```
 #### logln
 ```
- * 0x44 logln           ; putchar('\n')
+logln           ; putchar('\n')
 ```
 #### strcpy
 ```
