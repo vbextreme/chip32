@@ -182,7 +182,7 @@ pop r           ; r = *(--stack)
 logi r          ; printf("%d", r)
 ```
 #### logu
-````
+```
 logu r          ; printf("%u", r)
 ```
 #### logc
