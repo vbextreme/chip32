@@ -20,7 +20,7 @@ $ sudo ninja install
 chip32 -f ./examples/hellowrold.asm -o ./examples/helloworld.chip32
 ```
 #### run
- ``
+```
 chip32 -r -o ./examples/helloworld.chip32
 ```
 #### include other directory, build and run
