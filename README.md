@@ -120,29 +120,87 @@ and $0, $1   ; r0 &= r1
 ```
 not $0, $1   ; r0 ~= r1
 ```
- * 0x0D shl rdst,rsrc   ; r0 <<= r1
- * 0x0E shr rdst,rsrc   ; r0 >>= r1
+#### shl
+```
+shl $r0, $r1   ; r0 <<= r1
+```
+#### shr
+```
+shr $0, $1   ; r0 >>= r1
+```
+#### rol
+```
  * 0x0F rol rdst,rsrc   ; r0 = (r0<<r1) | (r0 >> 32-r1)
- * 0x10 ror rdst,rsrc   ; r0 = (r0>>r1) | (r0 << 32-r1)
- * 0x11 bor rdst,rsrc   ; r0 = r0 || r1
- * 0x12 band rdst,rsrc  ; r0 = r0 && r1
- * 0x13 bnot rdst       ; r0 = !r0
- * 0x20 jmp r           ; goto addr
- * 0x20 jmpi r          ; goto curaddr+addr
- * 0x21 ift r radr      ; if( r ) else goto curaddr+addr
- * 0x22 iff r radr      ; if( !r ) else goto curaddr+addr
- * 0x23 call r          ; r()
- * 0x24 ret             ; return
- * 0x25 push r          ; *stack-- =r
- * 0x26 pop r           ; r = *(--stack)
- * 0x30 initr r         ; ram = malloc(r)  requires as first command on data segment
- * 0x40 logi r          ; printf("%d", r)
- * 0x41 logu r          ; printf("%u", r)
- * 0x42 logc r          ; printf("%c", r)
+```
+#### ror
+```
+ror $0, $1   ; r0 = (r0>>r1) | (r0 << 32-r1)
+```
+#### bor
+```
+bor $0, $1   ; r0 = r0 || r1
+```
+#### band
+```
+band $0, $1  ; r0 = r0 && r1
+```
+#### bnot
+```
+bnot $0      ; r0 = !r0
+```
+#### jmp jmpi
+```
+jmp $r       ; goto addr
+jmpi 12      ; goto currentaddress+12
+```
+#### ift
+```
+ift $r radr      ; if( r ) ... else goto curaddr+addr
+```
+#### iff
+```
+iff $r radr      ; if( !r ) ... else goto curaddr+addr
+```
+#### call
+```
+call $r          ; r()
+```
+#### ret
+```
+ret             ; return
+```
+#### push
+```
+push r          ; *stack-- =r
+```
+#### pop
+```
+pop r           ; r = *(--stack)
+```
+#### logi
+```
+logi r          ; printf("%d", r)
+```
+#### logu
+````
+logu r          ; printf("%u", r)
+```
+#### logc
+```
+logc r          ; printf("%c", r)
+```
+#### logs
+```
  * 0x43 logs r          ; printf("%s", r)
+```
+#### logln
+```
  * 0x44 logln           ; putchar('\n')
- * 0x50 strcpy rdst,rsrc; strcpy(rdst, rsrc)
- *
+```
+#### strcpy
+```
+strcpy $0, $1; strcpy(r0, r1)
+```
 
 ### Configuration
 
