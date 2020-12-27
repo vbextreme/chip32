@@ -2,8 +2,6 @@
 # project #
 ###########
 project('chip32', 'c')
-projectName = 'chip32'
-
 cc = meson.get_compiler('c')
 
 ###########
@@ -34,18 +32,6 @@ add_global_arguments('-Wvla', language: 'c')
 
 # standard
 add_global_arguments('-std=gnu11', language: 'c')
-
-# open mp
-if get_option('openmp') > 0
-  add_global_arguments('-fopenmp', language:'c')
-  add_global_link_arguments('-fopenmp', language:'c')
-endif 
-
-# gprof
-if get_option('gprof') > 0
-  add_global_arguments('-pg', language:'c')
-  add_global_link_arguments('-pg', language:'c')
-endif
 
 # optimization
 if( get_option('optimize') > 0 )
@@ -87,24 +73,6 @@ libDeps = [  ]
 # debug #
 #########
 
-opt_debug = get_option('ebug')
-if opt_debug > 0
-  message('debug enabled')
-  debugstr = '-DEF_DEBUG_ENABLE=@0@'
-  debugstr = debugstr.format(opt_debug)
-  add_global_arguments(debugstr, language: 'c')
-endif
-
-if get_option('olor') > 0
-  message('color debug enabled')
-  add_global_arguments('-DEF_DEBUG_COLOR=1', language: 'c')
-endif
-
-if get_option('assert') > 0
-  message('assertion enabled')
-  add_global_arguments('-DEF_ASSERT_ENABLE=1', language: 'c')
-endif
-
 ###########
 # license #
 ###########
@@ -116,5 +84,5 @@ message('released under GPLv3')
 # build #
 #########
 
-executable(projectName, src, include_directories: includeDir, dependencies: libDeps, install: true)
+executable(meson.project_name(), src, include_directories: includeDir, dependencies: libDeps, install: true)
 
