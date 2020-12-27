@@ -433,7 +433,7 @@ __private int action_and(asmchip32_s* c, lexcmd_s* cmd){
 }
 
 __private int action_not(asmchip32_s* c, lexcmd_s* cmd){
-	return parse_onearg(c, cmd, CHIP32_CMD_NOT);
+	return parse_twoarg(c, cmd, CHIP32_CMD_NOT);
 }
 
 __private int action_shl(asmchip32_s* c, lexcmd_s* cmd){
